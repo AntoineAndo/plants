@@ -1,6 +1,11 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
-export default function Home() {
+import { getSortedPostsData } from '../lib/posts'
+
+
+export default function Home({ allPostsData }) {
+  console.log(allPostsData)
   return (
     <div className="container">
       <Head>
@@ -10,13 +15,29 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Read{' '}
+          <Link href="/posts/first-post">
+            <a>this page!</a>
+          </Link>
         </h1>
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
-
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
+      </section>
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
             <h3>Documentation &rarr;</h3>
@@ -55,7 +76,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          <img src="/reinold.jpg" alt="Reinold" className="logo" />
         </a>
       </footer>
 
@@ -206,4 +227,13 @@ export default function Home() {
       `}</style>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
 }
