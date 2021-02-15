@@ -1,22 +1,25 @@
+
+
 .container {
-  max-width: 36rem;
-  padding: 0 1rem;
-  margin: 3rem auto 6rem;
-}
+  display: grid;
+  grid-template-rows: 100px auto;
+  grid-template-columns: 20% auto;
+	border: solid black 1px;
 
-.header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	.headerImage {
-	  width: 6rem;
-	  height: 6rem;
+	.header {
+		background: red;
+	  grid-row-start: 1;
+	  grid-row-end: 2;
+	  grid-column-start: 1;
+	  grid-column-end: 3;
 	}
-
-	.headerHomeImage {
-	  width: 8rem;
-	  height: 8rem;
+	
+	.main {
+		background: green;
+	  grid-row-start: 2;
+	  grid-row-end: 2;
+	  grid-column-start: 2;
+	  grid-column-end: 3; 
 	}
 
 }

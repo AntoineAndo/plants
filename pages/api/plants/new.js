@@ -7,17 +7,8 @@ export default async (req, res) => {
 	  // Insert some documents
 	  collection.insertMany([req.body
 	  ], function(err, result) {
-	  	console.log(result)
+	  	if(!err)
+  			res.status(200).json(result);
 	  });
 	}
-/*
-	  const movies = await db
-	    .collection("movies")
-	    .find({"_id": mongoose.Types.ObjectId(id)})
-	    .sort({ metacritic: -1 })
-	    .limit(20)
-	    .toArray();
-	}
-	*/
-  	res.status(200).json("azdazd")
 }
