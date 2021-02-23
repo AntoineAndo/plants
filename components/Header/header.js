@@ -20,9 +20,13 @@ export default function Header(){
 			</div>
 			<div className={styles.branding}>
 				<div className={styles.img_container}>
-					<img src="/images/plant.svg"/>
+					<Link href="/plants">
+						<a>
+							<img src="/images/plant.svg"/>
+						</a>
+					</Link>
 				</div>
-				<h1>Plants</h1>
+				<h1>Plants!!!</h1>
 			</div>
 		</div>
 	)
