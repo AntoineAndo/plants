@@ -4,10 +4,47 @@
 	grid-column-start: 1;
 	grid-column-end: 3;
 	border-bottom: solid 15px #cf9744;
-
-    overflow-wrap: anywhere;
-    color: green;
-    font-size: 33px;
-    line-height: 0.66em;
+    position: relative;
     overflow: hidden;
+
+    .background{
+	    overflow-wrap: anywhere;
+	    font-size: 21px;
+	    line-height: 0.66em;
+
+		@for $i from 1 through 200 {
+			$randomHue: random(60)+60;
+			$randomSaturation: random(50)+30;
+			$randomLight: random(50)+30;
+			span:nth-child(#{$i}) {
+    			color: hsl($randomHue, $randomSaturation, $randomLight);
+			}
+		}
+		
+    }
+
+    .branding{
+    	position: absolute;
+    	top: 5px;
+    	left: 25px;
+
+    	.img_container{
+	    	width: 75px;
+	    	height: 75px;
+	    	padding: 15px;
+
+	    	display: inline-block;
+
+	    	border-radius: 50px;
+	    	background-color: white;
+    	}
+
+    	h1{
+    		display: inline-block;
+		    vertical-align: bottom;
+
+		    margin-left: 15px;
+    	}
+    }
+
 }
