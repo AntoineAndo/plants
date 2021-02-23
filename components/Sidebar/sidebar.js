@@ -6,21 +6,33 @@ import styles from './sidebar.module.scss'
 import utilStyles from '../../styles/utils.module.css'
 import Link from 'next/link'
 
+import useSWR from 'swr'
+
 class Sidebar extends React.Component{
 
 	constructor(props) {
 		super(props);
-		this.plants = props.plants;
+		this.state = {
+			"plants" : props.plants
+		}
+
+		//const { data, error } = useSWR('/api/user', fetcher)
 	}
 
 	render(){
 	  return (
 		<div className={styles.sidebar}>
-			<h1>Sidebar</h1>
+			<h1>SIDEBAR</h1>
 
 			<ul>
-				{this.plants.map(function(plant){
-					return <li>{plant.scientific_name}</li>
+				{this.state.plants.map(function(plant,key){
+					return (
+						<li key={key}>
+							<Link href={"/plants/"+plant.slug}>
+								<a>{plant.scientific_name}</a>
+							</Link>
+						</li>
+					)
 				})}
 			</ul>
 			<Link href="/plants/new">

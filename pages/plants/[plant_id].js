@@ -6,44 +6,78 @@ import { useRouter } from 'next/router'
 
 import axios from 'axios'
 
+
+import { useState  } from "react";
+
 export default function PlantDetail({plant}) {
 
-  if(plant.name == undefined){
+  const [state, setState] = useState({"isOwned" : true});
+  const [count, setCount] = useState(0);
+  
+  const router = useRouter();
+
+  const deletePlant = function(plant_slug){
+    console.log("DELETEazdazdazd")
+    console.log(state)
+    axios.delete('http://localhost:3000/api/plants/'+plant_slug)
+    .then(function(answer){
+      setState({ "isOwned": false });
+      router.replace(router.asPath);
+    }).catch(function(error){
+      console.log("error")
+    })
+  }
+
+  if(plant == undefined){
     return (
       <div>
-        <h1>Oops couldn't find the plant you are looking for</h1>
+        <h1>Oops couldn't find the <span className="green">plant</span> you are looking for</h1>
       </div>
     )
   }
 
   return (
     <div>
-      <h1>test</h1>
-      <h2>{plant.name}</h2>
-      <p>{plant.watering}</p>
-    </div>
+      <h1>{plant.scientific_name}</h1>
+      {state.isOwned == true && <button onClick={() => deletePlant(plant.slug)} >Delete</button>}
+      <p>{/*JSON.stringify(plant)*/}</p>
+    </div> 
   )
 }
 
 export async function getServerSideProps(context){
 
-  const plant_id = context.query.plant_id;
+  const plant_slug = context.query.plant_id;
 
-  var response = [];
-  await axios.get('http://localhost:3000/api/plants/'+plant_id)
+  var requestedPlant = [];
+  await axios.get('http://localhost:3000/api/plants/'+plant_slug)
   .then(function(answer){
-    response = answer.data
-    console.log(answer)
+    requestedPlant = answer.data
   }).catch(function(error){
     console.log("error");
     console.log(error);
+    requestedPlant = null
   }).then(function(){
     //console.log("then")
   })
 
+
+      //HORRIBLE
+      //Trouver un moyen de mieux gérer le layout
+      var sidebar_plantList = [];
+      await axios.get('http://localhost:3000/api/plants')
+      .then(function(answer){
+        sidebar_plantList = answer.data
+      }).catch(function(error){
+        console.log(error);
+        console.log("error");
+      }).then(function(){
+      })
+
   return {
     props : {
-      plant : response
+      plant : requestedPlant,
+      plants: sidebar_plantList
     }
   }
 }

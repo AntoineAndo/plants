@@ -1,29 +1,21 @@
 
 
 .container {
-  display: grid;
-  grid-template-rows: 100px auto;
-  grid-template-columns: 20% auto;
-	border: solid black 1px;
-
-	.header {
-		background: red;
-	  grid-row-start: 1;
-	  grid-row-end: 2;
-	  grid-column-start: 1;
-	  grid-column-end: 3;
-	}
+	display: grid;
+	grid-template-rows: 100px auto;
+	grid-template-columns: 20% auto;
 	
 	.main {
-		background: green;
-	  grid-row-start: 2;
-	  grid-row-end: 2;
-	  grid-column-start: 2;
-	  grid-column-end: 3; 
+		grid-row-start: 2;
+		grid-row-end: 2;
+		grid-column-start: 2;
+		grid-column-end: 3; 
+
+		padding: 25px;
 	}
 
 }
 
 .backToHome {
-  margin: 3rem 0 0;
+	margin: 3rem 0 0;
 }

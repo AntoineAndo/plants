@@ -10,12 +10,15 @@ import {Form, Button, Alert, Col, Row} from 'react-bootstrap'
 
 
 import { useState  } from "react";
+import { useRouter } from 'next/router'
 
 export default function New() {
 
   const initialSearchState = { searchText: "", searchResult: []};
   const [searchState, setSearchState] = useState(initialSearchState);
   const {searchText, searchResult} = searchState;
+
+  const router = useRouter();
 
   const handleInputChange = e => {
     var localState = searchState;
@@ -26,7 +29,7 @@ export default function New() {
 
   const handleSearch = e => {
     (async () => {
-      const response = await fetch('https://trefle.io/api/v1/plants/search?token=neDmD4I8F-HTbUTNRvSd9ZEwnwRClCBnHwHFyBxvU3Q&q='+searchState.searchText)
+      const response = await fetch('https://trefle.io/api/v1/species/search?token=neDmD4I8F-HTbUTNRvSd9ZEwnwRClCBnHwHFyBxvU3Q&q='+searchState.searchText)
       response.json().then(function(json){
         var localState = searchState;
         localState.searchResult = json.data;
@@ -36,19 +39,24 @@ export default function New() {
   }
 
   const handlePlantSubmit = (plantToSave) => {
-    console.log(plantToSave)
 
-    axios.post('/api/plants/new', plantToSave)
-      .then(function(response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
+    
+    (async () => {
+        const response = await fetch('https://trefle.io'+plantToSave.links.self+"?token="+"neDmD4I8F-HTbUTNRvSd9ZEwnwRClCBnHwHFyBxvU3Q")
+        response.json().then(function(json){
+          axios.post('/api/plants/new', plantToSave)
+          .then(function(response) {
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+          .then(function () {
+            console.log(router.asPath)
+            router.replace("/plants");
+          });
+        });
+    })();
 
   };
 

@@ -4,8 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Styles
 import styles from '../components/layout.module.scss'
 import utilStyles from '../styles/utils.module.css'
+import '@fortawesome/fontawesome-free/css/all.css';
 
 import Layout from '../components/layout'
+import Header from '../components/Header/header'
 import Sidebar from '../components/Sidebar/sidebar'
 import Head from 'next/head'
 
@@ -23,7 +25,7 @@ export default function MyApp({ Component, pageProps }) {
 		          content="just. more. plants."
 		        />
 		      </Head>
-      		<div className={styles.header}>Header</div>
+		    <Header />
     		<Sidebar plants={pageProps.plants} />
 			<div className={styles.main}>
 	    		<Component {...pageProps} />

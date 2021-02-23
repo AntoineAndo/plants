@@ -9,9 +9,10 @@ export default function searchResult(props){
 	}
 
 	return(
-		<li className={styles.searchResult} key={props.key} onClick={handleClick}>
+		<li className={styles.searchResult} key={props.key}>
 			<img src={props.plant.image_url} alt={props.plant.slug} />
-			<span>{props.plant.common_name}</span>
+			<span>{props.plant.scientific_name}</span>
+			<div className={styles.addToCollection} onClick={handleClick}>Ajouter</div>
 		</li>
 	)
 
