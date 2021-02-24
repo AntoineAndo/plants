@@ -11,9 +11,14 @@ export default function Index({props}) {
     	<Head>
     		<title>plants</title>
     	</Head>
-		<h1>PLANTS</h1>
-		<h1>PLANTS</h1>
-		<h1>PLANTS</h1>
+
+      <div class="d-flex flex-column card w-50 p-4 align-items-center">
+        <h3 class="text-center">Oh no, you have no plants in your collection... How about adding some?</h3>
+
+        <Link href="/plants/new">
+          <a class="button_primary">Yes please</a>
+        </Link>
+      </div>
     </>
   )
 }

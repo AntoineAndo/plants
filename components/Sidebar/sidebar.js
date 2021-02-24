@@ -20,21 +20,24 @@ class Sidebar extends React.Component{
 	render(){
 	  return (
 		<div className={styles.sidebar}>
-			<h1>SIDEBAR</h1>
+			<div className={styles.sidebar_content}>
+				<h1>SIDEBAR</h1>
 
-			<ul>
-				{this.state.plants.map(function(plant,key){
-					return (
-						<li key={key}>
-							<Link href={"/plants/"+plant.slug}>
-								<a>{plant.scientific_name}</a>
-							</Link>
-						</li>
-					)
-				})}
-			</ul>
+				<ul>
+					{this.state.plants.map(function(plant,key){
+						return (
+							<li key={key}>
+								<Link href={"/plants/"+plant.slug}>
+									<a>{plant.scientific_name}</a>
+								</Link>
+							</li>
+						)
+					})}
+				</ul>
+			</div>
+
 			<Link href="/plants/new">
-				<a>Nouvelle plante</a>
+				<a class="button_primary">Nouvelle plante</a>
 			</Link>
 		</div>
 	  )
