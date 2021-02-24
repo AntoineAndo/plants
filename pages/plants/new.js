@@ -66,7 +66,7 @@ export default function New() {
     		<title>Ajouter une nouvelle plante</title>
     	</Head>	
       <div class="d-flex flex-column card w-50 p-4 align-items-center">
-      <h1>Ajouter une nouvelle plante</h1>
+      <h2>Ajouter une nouvelle plante</h2>
       <Form>
         <Form.Group as={Row} controlId="searchText">
           <Col xs={10} sm={8}>

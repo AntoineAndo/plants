@@ -21,7 +21,7 @@ class Sidebar extends React.Component{
 	  return (
 		<div className={styles.sidebar}>
 			<div className={styles.sidebar_content}>
-				<h1>SIDEBAR</h1>
+				<h3>SIDEBAR</h3>
 
 				<ul>
 					{this.state.plants.map(function(plant,key){
