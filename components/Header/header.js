@@ -10,7 +10,7 @@ export default function Header(){
 
 	var background = [];
 	for(let i = 0;i<200;i++){
-		background.push(<span>PLANTS</span>)
+		background.push(<span id={"bg_"+i}>PLANTS</span>)
 	}
 
 	return (
@@ -19,13 +19,13 @@ export default function Header(){
 				{background}
 			</div>
 			<div className={styles.branding}>
-				<div className={styles.img_container}>
-					<Link href="/plants">
-						<a>
+				<Link href="/plants">
+					<a>
+						<div className={styles.img_container}>
 							<img src="/images/plant.svg"/>
-						</a>
-					</Link>
-				</div>
+						</div>
+					</a>
+				</Link>
 				<h1>Plants!!!</h1>
 			</div>
 		</div>
