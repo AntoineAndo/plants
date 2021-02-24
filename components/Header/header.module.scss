@@ -22,8 +22,6 @@
 
     			$randomDot : random(10);
 
-    			@debug $randomDot == 5;
-
     			@if ($randomDot == 5){
 					&[id=bg_#{$i}]:after
 					{

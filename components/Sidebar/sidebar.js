@@ -15,8 +15,6 @@ class Sidebar extends React.Component{
 		this.state = {
 			"plants" : props.plants
 		}
-
-		//const { data, error } = useSWR('/api/user', fetcher)
 	}
 
 	render(){

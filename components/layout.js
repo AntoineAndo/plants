@@ -9,5 +9,5 @@ import utilStyles from '../styles/utils.module.css'
 import Head from 'next/head'
 import Sidebar from './Sidebar/sidebar'
 
-export default function Layout({ children, props}) {
+export default function Layout() {
 }   
