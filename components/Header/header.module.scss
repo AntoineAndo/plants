@@ -19,25 +19,8 @@
 			$randomLight: random(50)+30%;
 			span:nth-child(#{$i}) {
     			color: hsl($randomHue, $randomSaturation, $randomLight);
-
-    			$randomDot : random(10);
-
-    			@if ($randomDot == 5){
-					&[id=bg_#{$i}]:after
-					{
-					    content: '';
-					    position:absolute;
-					    left:0;
-					    top:0;
-					    width: 100%;
-					    height: 100%;
-					    background: radial-gradient(circle, transparent 50%, transparent 50%), radial-gradient(circle, transparent 20%, white 50%) 30px 30px;
-					    background-size:4px 4px;
-					}
-    			}
 			}
 		}
-		
     }
 
     .branding{
